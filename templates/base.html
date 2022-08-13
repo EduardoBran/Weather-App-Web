@@ -1,0 +1,21 @@
+{% load static %}
+
+<html lang="pt">
+<head>
+
+    <title>WeatherApp | Home</title>
+    {% include 'parciais/_head.html' %}
+
+</head>
+<body>
+    {% include 'parciais/_nav.html' %}
+    <div class ="container">
+        <div class ="row">
+            <div class =".col-md-6 m-auto">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+{% include 'parciais/_footer.html' %}
+</html> 
