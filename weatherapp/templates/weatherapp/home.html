@@ -1,16 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
 
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="text" placeholder="Enter city name" name="city" />
+    <button type="submit">Enter</button>
+</form>
+
+<br>
 <h1>Pegando dados</h1>
 <br>
 <h3>Day -> <strong>{{ day }}</strong></h3>
 <br>
-<h3>Description -> <strong>{{ description }}</srong>
+<h3>Description -> <strong>{{ description }}</strong>
 </h3>
 <br>
-<h3>Temperature -> <srong>{{ temp }}</srong>
-</h3>
+<h3>Temperature -> <strong>{{ temp }}</strong></h3>
+<br>
+<h3>City -> <strong>{{ city }}</strong></h3>
+<br>
 <br>
 <h3>Icon -> imagem abaixo</h3>
 <br>
