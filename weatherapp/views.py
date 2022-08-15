@@ -11,6 +11,9 @@ def homeView(request):
         city = request.POST['city']
     else:
         city = 'Niteroi'
+        
+    if city == None or city == "":
+        city = 'Niteroi'  # enviar mensagem de cidade nao encontrada!
     
     appid = '135b2cbe9493a774efcf3e7177bcd6bd'    
     
