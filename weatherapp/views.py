@@ -1,11 +1,12 @@
 import datetime
 
 import requests
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 
 def homeView(request):
     api_call_site = 'https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}'
+    
     
     if 'city' in request.POST:
         city = request.POST['city']
@@ -13,7 +14,7 @@ def homeView(request):
         city = 'Niteroi'
         
     if city == None or city == "":
-        city = 'Niteroi'  # enviar mensagem de cidade nao encontrada!
+        city = 'Niteroi'  # enviar mensagem de 'voce precisa digitar um nome de cidade'
     
     appid = '135b2cbe9493a774efcf3e7177bcd6bd'    
     
@@ -27,6 +28,9 @@ def homeView(request):
     }
     
     r = requests.get(url=URL, params=PARAMS)
+    
+    if r.status_code == 404:
+        return redirect('home') # enviar mensagem de 'cidade nao existe'
     
     res = r.json()
     
