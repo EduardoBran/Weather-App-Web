@@ -2,6 +2,16 @@
 
 {% block content %}
 
-HOME
+<h1>Pegando dados</h1>
+<br>
+<h3>Description -> <strong>{{ description }}</srong>
+</h3>
+<br>
+<h3>Temperature -> <srong>{{ temp }}</srong>
+</h3>
+<br>
+<h3>Icon -> imagem abaixo</h3>
+<br>
+<img src="http://openweathermap.org/img/w/{{icon}}.png">
 
 {% endblock %}

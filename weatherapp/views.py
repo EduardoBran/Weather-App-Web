@@ -1,9 +1,31 @@
+import requests
 from django.shortcuts import render
 
 
 def homeView(request):
-    url = 'http://api.openweathermap.org/data/2.5/forecast?d=524901&appid=135b2cbe9493a774efcf3e7177bcd6bd'
-    APPID = '135b2cbe9493a774efcf3e7177bcd6bd'    
+    api_call_site = 'https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}'
     
-    context = {}
+    appid = '135b2cbe9493a774efcf3e7177bcd6bd'    
+    
+    URL = 'https://api.openweathermap.org/data/2.5/weather'
+    
+    PARAMS = {
+        'q': 'london',
+        'appid': appid,
+        'units': 'metric'
+    }
+    
+    r = requests.get(url=URL, params=PARAMS)
+    
+    res = r.json()
+    
+    description = res['weather'][0]['description']
+    icon = res['weather'][0]['icon']
+    temp = res['main']['temp']
+    
+    context = {
+        'description': description,
+        'icon': icon,
+        'temp': temp
+    }
     return render(request, 'weatherapp/home.html', context)
