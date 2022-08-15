@@ -19,7 +19,8 @@ def homeView(request):
     PARAMS = {
         'q': city,
         'appid': appid,
-        'units': 'metric'
+        'units': 'metric',
+        'lang': 'pt_br'
     }
     
     r = requests.get(url=URL, params=PARAMS)
@@ -32,11 +33,18 @@ def homeView(request):
     
     day = datetime.date.today()
     
+    humidity = res['main']['humidity']
+    speed_wind = res['wind']['speed']
+    country = res['sys']['country']
+    
     context = {
         'description': description,
         'icon': icon,
         'temp': temp,
         'day': day,
         'city': city,
+        'humidity': humidity,
+        'speed_wind': speed_wind,
+        'country': country,
     }
     return render(request, 'weatherapp/home.html', context)
