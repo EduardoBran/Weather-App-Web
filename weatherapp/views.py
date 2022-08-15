@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 from django.shortcuts import render
 
@@ -23,9 +25,12 @@ def homeView(request):
     icon = res['weather'][0]['icon']
     temp = res['main']['temp']
     
+    day = datetime.date.today()
+    
     context = {
         'description': description,
         'icon': icon,
-        'temp': temp
+        'temp': temp,
+        'day': day,
     }
     return render(request, 'weatherapp/home.html', context)
