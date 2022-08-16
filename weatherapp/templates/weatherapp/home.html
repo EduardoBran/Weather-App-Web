@@ -3,7 +3,6 @@
 {% block content %}
 
 <style>
-    /* CSS */
     .button-40 {
         background-color: #111827;
         border: 1px solid transparent;
@@ -59,7 +58,7 @@
                 <form method="POST" action="">
                     {% csrf_token %}
                     <input type="search" name="city" id="address" class="form-control" placeholder="Cidade..."
-                        style="margin-top: 22px; margin-bottom: 12px;" />
+                        style="margin-top: 22px; margin-bottom: 14px;" />
 
                     <div class="text-center">
                         <button type="submit" class="button-40">Buscar</button>
@@ -71,7 +70,7 @@
         <br>
 
         <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-8 col-lg-6 col-xl-4" style="margin-bottom: 140px;">
+            <div class="col-md-8 col-lg-6 col-xl-4">
                 <div class="card" style="color: #4B515D; border-radius: 35px;">
                     <div class="card-body p-4">
 
