@@ -57,3 +57,7 @@ def homeView(request):
         'tempMax': tempMax,
     }
     return render(request, 'weatherapp/home.html', context)
+
+
+def sobreView(request):
+    return render(request, 'weatherapp/sobre.html')
