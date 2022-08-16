@@ -84,3 +84,8 @@ def sobreView(request):
         'form':form
     }
     return render(request, 'weatherapp/sobre.html', context)
+
+
+
+def projetosView(request):
+    return render(request, 'weatherapp/projetos.html')
