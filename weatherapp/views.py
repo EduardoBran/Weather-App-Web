@@ -41,7 +41,8 @@ def homeView(request):
     day = datetime.date.today()
     
     humidity = res['main']['humidity']
-    speed_wind = res['wind']['speed']
+    tempMin = res['main']['temp_min']
+    tempMax = res['main']['temp_max']
     country = res['sys']['country']
     
     context = {
@@ -51,7 +52,8 @@ def homeView(request):
         'day': day,
         'city': city,
         'humidity': humidity,
-        'speed_wind': speed_wind,
         'country': country,
+        'tempMin': tempMin,
+        'tempMax': tempMax,
     }
     return render(request, 'weatherapp/home.html', context)

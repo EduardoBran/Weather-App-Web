@@ -2,16 +2,76 @@
 
 {% block content %}
 
-<form method="POST" action="">
-    {% csrf_token %}
-    <input type="text" name="city" placeholder="Enter City">
-    <button type="submit" class="btn">Enter</button>
-</form>
+<style>
+    /* CSS */
+    .button-40 {
+        background-color: #111827;
+        border: 1px solid transparent;
+        border-radius: .75rem;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        flex: 0 0 auto;
+        font-family: "Inter var";
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        padding: .75rem 1.2rem;
+        text-align: center;
+        text-decoration: none #6B7280 solid;
+        text-decoration-thickness: auto;
+        transition-duration: .2s;
+        transition-property: background-color, border-color, color, fill, stroke;
+        transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: auto;
+    }
 
-<section class="vh-100" style="background-color: #4B515D;">
+    .button-40:hover {
+        background-color: #374151;
+    }
+
+    .button-40:focus {
+        box-shadow: none;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+    }
+
+    @media (min-width: 768px) {
+        .button-40 {
+            padding: .75rem 1.5rem;
+        }
+    }
+
+    .iColor {
+        color: #868B94;
+    }
+</style>
+
+
+<section class="vh-100">
+
     <div class="container h-100">
+        <div class="row">
+            <div class="col-md-12">
 
-        <div class="row d-flex justify-content-center align-items-center h-100">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="search" name="city" id="address" class="form-control" placeholder="Cidade..."
+                        style="margin-top: 22px; margin-bottom: 12px;" />
+
+                    <div class="text-center">
+                        <button type="submit" class="button-40">Buscar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <br>
+
+        <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-8 col-lg-6 col-xl-4">
 
                 <div class="card" style="color: #4B515D; border-radius: 35px;">
@@ -30,20 +90,26 @@
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1" style="font-size: 1rem;">
                                 <div>
-                                    <i class="fas fa-tint fa-fw" style="color: #868B94;"></i>
+                                    <i class="fas fa-tint fa-fw iColor"></i>
                                     <span class="ms-1">
-                                        Umidade: {{ humidity }}%
+                                        <strong>Umidade :</strong> {{ humidity }}%
                                     </span>
                                 </div>
                                 <div>
-                                    <i class="fas fa-sun fa-fw" style="color: #868B94;"></i>
+                                    <i class="fas fa-sun fa-fw iColor"></i>
                                     <span class="ms-1">
-
+                                        <strong>Temp. Min:</strong> {{ tempMin }}°C
+                                    </span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-sun fa-fw iColor"></i>
+                                    <span class="ms-1">
+                                        <strong>Temp. Máx:</strong> {{ tempMax }}°C
                                     </span>
                                 </div>
                             </div>
                             <div>
-                                <img src="http://openweathermap.org/img/w/{{icon}}.png" width="100px">
+                                <img src="http://openweathermap.org/img/w/{{icon}}.png" width="90px">
                             </div>
                         </div>
 
