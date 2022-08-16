@@ -1,6 +1,7 @@
 import datetime
 
 import requests
+from django.contrib import messages
 from django.shortcuts import redirect, render
 
 
@@ -14,7 +15,7 @@ def homeView(request):
         city = 'Niteroi'
         
     if city == None or city == "":
-        city = 'Niteroi'  # enviar mensagem de 'voce precisa digitar um nome de cidade'
+        city = 'Niteroi'
     
     appid = '135b2cbe9493a774efcf3e7177bcd6bd'    
     
@@ -30,7 +31,12 @@ def homeView(request):
     r = requests.get(url=URL, params=PARAMS)
     
     if r.status_code == 404:
-        return redirect('home') # enviar mensagem de 'cidade nao existe'
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Cidade não encontrada.'
+        )
+        return redirect('home')
     
     res = r.json()
     
